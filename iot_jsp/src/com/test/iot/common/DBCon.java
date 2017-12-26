@@ -28,5 +28,23 @@ public class DBCon {
 		System.out.println(DBCon.conn);
 		return DBCon.conn;
 	}
+public static void closeCon() { 
+ 		try { 
+ 			DBCon.conn.close(); 
+ 			DBCon.conn = null; 
+ 			System.out.println("conn 종료됨"); 
+ 		} catch (SQLException e) { 
+ 			e.printStackTrace(); 
+ 		} 
+ 	} 
+ 	 
+ 	public void commit() throws SQLException { 
+     	conn.commit(); 
+     } 
+      
+     public void rollback() throws SQLException { 
+     	conn.rollback(); 
+     } 
+ } 
 
 }
