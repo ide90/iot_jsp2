@@ -10,14 +10,15 @@ import javax.sql.DataSource;
 
 public class DBCon {
 	private static Connection conn;
+
 	public static Connection getCon() {
 		if (DBCon.conn == null) {
 
 			Context initContext;
 			try {
 				initContext = new InitialContext();
-				Context envContext = (Context)initContext.lookup("java:/comp/env");
-				DataSource ds = (DataSource)envContext.lookup("jdbc/IOT");
+				Context envContext = (Context) initContext.lookup("java:/comp/env");
+				DataSource ds = (DataSource) envContext.lookup("jdbc/IOT");
 				DBCon.conn = ds.getConnection();
 
 			} catch (NamingException | SQLException e) {
@@ -28,23 +29,23 @@ public class DBCon {
 		System.out.println(DBCon.conn);
 		return DBCon.conn;
 	}
-public static void closeCon() { 
- 		try { 
- 			DBCon.conn.close(); 
- 			DBCon.conn = null; 
- 			System.out.println("conn 종료됨"); 
- 		} catch (SQLException e) { 
- 			e.printStackTrace(); 
- 		} 
- 	} 
- 	 
- 	public void commit() throws SQLException { 
-     	conn.commit(); 
-     } 
-      
-     public void rollback() throws SQLException { 
-     	conn.rollback(); 
-     } 
- } 
+
+	public static void closeCon() {
+		try {
+			DBCon.conn.close();
+			DBCon.conn = null;
+			System.out.println("conn 醫낅즺�맖");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void commit() throws SQLException {
+		conn.commit();
+	}
+
+	public void rollback() throws SQLException {
+		conn.rollback();
+	}
 
 }

@@ -70,3 +70,4 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher(uri);
 		rd.forward(req, res);
 	}
+}

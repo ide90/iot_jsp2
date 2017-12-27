@@ -9,7 +9,6 @@ import com.test.iot.common.DBCon;
 import com.test.iot.dao.UserDAO;
 import com.test.iot.dao.impl.UserDAOImpl;
 import com.test.iot.service.ClassService;
-import com.test.iot.service.UserService;
 
 public class ClassServiceImpl implements ClassService {
 	Connection con;
