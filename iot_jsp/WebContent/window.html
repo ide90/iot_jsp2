@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	
+	<input type="button" value="클릭미" onclick="clickCount()">
+	<input type="button" value="나와라 자식창" onclick="openChildWindow()">
+	
+
+</body>
+<script>
+function openChildWindow(){
+	window.open("/test.html");
+}
+	var cnt = 1;
+	function clickCount() {
+		alert(cnt++);
+	}
+</script>
+</html>
