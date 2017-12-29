@@ -5,9 +5,9 @@
 <title>Insert title here</title>
 </head>
 <script>
-   var rNum = Math.floor(Math.random() * 9) + 1;
+   
+   var rNum = Math.floor(Math.random()* 9 )+1;
    alert(rNum);
-
    function bomb(id) {
       if (rNum == document.getElementById(id).value) {
          alert("뻥!");

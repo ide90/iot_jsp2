@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="/js/test.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
+
+
+<script>
+	//function login(obj) {
+	//alert(obj.type);
+	//alert(typeof obj);
+	// alert(obj.parentNode.action);	
+	// alert(obj.parentNode.method);	
+	// obj.parentNode.submit();
+	//test(); }
+
+	/* $(document).ready(function(){
+	    $("#loginBtn").val("JBtn");
+	    $("#userId").val("test");
+	    $("#userPwd").val("test");
+	    alert($("#hText").html());      
+	    $("#loginBtn").click(function(){
+	 	 alert(1);  
+	    })
+	 });
+	 */
+
+	function checkValue(fObj) {
+		/*var userId = $("#userId").val().trim();
+		var userPwd = $("#userPwd").val().trim();
+		if (userId == "") {
+			alert("아이디 입력하라니께");
+			$("#userId").focus();
+			return false;
+
+		}
+		if (userPwd == "") {
+			alert("비밀번호 입력하라니께");
+			$("#userPwd").focus();
+			return false;
+		}
+		return true; */
+		
+		
+		var objs=$("input[data-val]");
+		for(var obj of objs){
+			var len = parseInt(obj.getAttribute("data-val"));
+			var value = obj.value.trim();
+			if(value.length<len){
+			alert(obj.getAttribute("data-msg"));
+			obj.value="";
+			obj.focus();
+			return false;
+		}
+		
+	}
+		return true;
+}
+</script>
+<body>
+	<form method="get" action="./location.html" onsubmit="return checkValue(this)">
+		      <h2 id="hText">로그인</h2>
+		아이디:  <input type="text" name="userId" id="userId" data-val="5" data-msg="아이디 입력하라고!"><br>
+		비밀번호 :<input type="password" name="userPwd" id="userPwd" data-val="5" data-msg="비밀번호 입력하라고!"><br>
+		       <input type="submit" id="loginBtn" value="로그인">
+	</form>
+</body>
+</html>
