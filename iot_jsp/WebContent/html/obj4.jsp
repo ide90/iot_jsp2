@@ -8,17 +8,22 @@
 </head>
 <script src="/js/jquery-3.2.1.js"></script>
 <script>
-	var user = {
-		id : "",
-		pwd : "",
-		name : ""
+	function callback(res) {
+		var obj = JSON.parse(res);
+		alert(obj.msg);
 	}
-
+	
 	function checkValue() {
 		/* id,pwd,name라는 변수를 가지고 있는  var user를 선언하여 화면에 있는 각 id의 값들과 일치하는 
 		element의 값을 저장 
 		console.log로 출력하는 예제를 작성해주세요
 		 */
+		 var user = {
+					id : "",
+					pwd : "",
+					name : ""
+				}
+
 		user.id = document.getElementById("id").value;
 		user.pwd = document.getElementById("pwd").value;
 		user.name = document.getElementById("name").value;
@@ -29,20 +34,17 @@
 		user[key]=elObj.value;
 		 */
 		var data = "param=" + encodeURIComponent(JSON.stringify(user));
-		
+
 		$.ajax({
 			url : "./test.jsp",
 			data : data,
-			type:"get",
-			success : function(res) {
-				alert(res);
-			},
+			type : "get",
+			success : callback,
 			error : function(xhr, status, error) {
 				$("#result_div").html(xhr.responseText);
 			}
 		});
 	}
-	
 </script>
 <body>
 

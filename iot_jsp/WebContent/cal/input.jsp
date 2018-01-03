@@ -12,13 +12,12 @@ function cal(){
 	var num1 = $("#num1").val();
 	var num2 = $("#num2").val();
 	var op = $("#op").val();
-	var param={num1:num1}
-	var param = "num1=" + num1 + "&num2=" +num2 + "&op=" +encodeURIComponent(JSON.stringigy(param));
-	
+	var param={num1:num1,num2:num2,op:op};
+	var params = "param=" + encodeURIComponent(JSON.stringify(param));	
 	$.ajax({
 		url:"cal.jsp",
 		type:"get",
-		data:param,
+		data:params,
 		success:function(res){
 			var obj = JSON.parse(res);
 			$("#result").val(obj.result);

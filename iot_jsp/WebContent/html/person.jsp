@@ -1,26 +1,16 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<script src="/js/jquery-3.2.1.js"></script>
-
-<script>
-/* person.jsp
-*no: ,id :, name:, age:,gender:,address:
-exam.jsp
-person.jsp에서 넘겨준 저위의 구조를 가지고 파싱을 해서 추가를 해주면되는데
-no버튼을 클릭할때마다 1++ 
- */
-	
- 
-</script>
-
-
-<body>
-
-</body>
-</html>
+    pageEncoding="UTF-8"%>
+<%
+String no = request.getParameter("no");
+HashMap<String, Object> hm = new HashMap<String, Object>();
+hm.put("no",Integer.parseInt(no)+1);
+hm.put("id","test");
+hm.put("name", "홍길동");
+hm.put("age",30);
+hm.put("gender","남자");
+hm.put("address","서울 강서구 등촌1동");
+Gson gs = new Gson();
+out.println(gs.toJson(hm));
+%>
