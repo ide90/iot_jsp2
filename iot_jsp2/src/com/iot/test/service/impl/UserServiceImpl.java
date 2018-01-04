@@ -5,38 +5,45 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.iot.test.dao.UserDAO;
+import com.iot.test.dao.impl.UserDAOImpl;
 import com.iot.test.service.UserService;
+import com.iot.test.vo.UserClass;
 
 public class UserServiceImpl implements UserService{
+	private Gson gs = new Gson();
+	private UserDAO ud = new UserDAOImpl();
 
 	@Override
-	public HashMap<String, Object> login(HttpServletRequest req) {
-		String id = req.getParameter("userId");
-		String pwd = req.getParameter("userPwd");
+	public HashMap<String,Object> login(HttpServletRequest req) {
+		
+		UserClass uc = gs.fromJson(req.getParameter("param"), UserClass.class);
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("msg", "오 로그인 성공하셨네요 ~");
 		hm.put("login", "ok");
-		if(id.equals("test")) {
-			if(!pwd.equals("test")) {
+		
+		UserClass checkUc=ud.selectUser(uc.getUiId());
+		if(checkUc!=null) {
+			if(!checkUc.getUiPwd().equals(uc.getUiPwd())) {
 				hm.put("msg", "비밀번호 확인하세요");
 				hm.put("login", "no");
-
 			}else {
-				HttpSession hs = req.getSession();
-				hs.setAttribute("id",id);
-				hs.setAttribute("Pwd",pwd);
+				HttpSession hs=req.getSession();
+				hs.setAttribute("user", checkUc);
+				
 			}
 		}else {
 			 hm.put("msg", "아이디를 확인하세요");
-				hm.put("login", "no");
-
+			 hm.put("login", "no");
 		}
 		return hm;
-		
-	}
-	public void logout(HttpServletRequest req) {
-		HttpSession hs = req.getSession();
-		hs.invalidate();
 	}
 
+	@Override
+	public void logout(HttpServletRequest req) {
+		HttpSession hs = req.getSession();
+		hs.invalidate();//세션값을 모조리 소멸시킴 
+	}
+	
 }
