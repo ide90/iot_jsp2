@@ -1,5 +1,6 @@
 package com.iot.test.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,25 @@ public class UserServiceImpl implements UserService{
 	public void logout(HttpServletRequest req) {
 		HttpSession hs = req.getSession();
 		hs.invalidate();//세션값을 모조리 소멸시킴 
+	}
+	public void signin(HttpServletRequest req) {
+		String json = req.getParameter("param");
+		UserClass uc = gs.fromJson(json,UserClass.class);
+		int result = ud.insertUser(uc);
+		HashMap<String,String> rm = new HashMap<String, String>();
+		rm.put("result", "no");
+		rm.put("msg", "실패했어 이유는 모르겠다");
+		if(result==1) {
+			rm.put("result","ok");
+			rm.put("msg", "성공했어, 잘했다~~");
+		}
+		req.setAttribute("resStr",gs.toJson(rm));
+		
+	}
+
+	@Override
+	public ArrayList<UserClass> getUserList() {
+		return ud.selectUserList();
 	}
 	
 }

@@ -11,6 +11,5 @@ public interface UserDAO {
 	int updateUser(UserClass uc);
 	int deleteUser(UserClass uc);
 	UserClass selectUser(String uiId);
-	ArrayList<UserClass> SelectUserList();
 	
 }
