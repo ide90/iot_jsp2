@@ -61,10 +61,12 @@ public class UserServlet extends HttpServlet {
 		}else if(cmd.equals("list")) {
 			ArrayList<UserClass> userList = us.getUserList();
 			out.println(gs.toJson(userList));
+		}else if(cmd.equals("delete")) {
+			out.println(us.deleteUser(req));
+		}else if(cmd.equals("update")) {
+			out.println(us.updateUser(req));
 			
 			
-			//System.out.println(uc);
-			//out.println(gs.toJson(uc));
 			
 		}
 	}

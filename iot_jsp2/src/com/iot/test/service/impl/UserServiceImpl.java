@@ -65,5 +65,37 @@ public class UserServiceImpl implements UserService{
 	public ArrayList<UserClass> getUserList() {
 		return ud.selectUserList();
 	}
+
+	@Override
+	public String deleteUser(HttpServletRequest req) {
+		int uiNo = Integer.parseInt(req.getParameter("uiNo"));
+		UserClass uc = new UserClass();
+		uc.setUiNo(uiNo);
+		int result = ud.deleteUser(uc);		
+		HashMap<String,String> rm = new HashMap<String, String>();
+		rm.put("result", "no");
+		rm.put("msg", "삭제가 실패하였습니다.");
+		if(result==1) {
+			rm.put("result", "ok");
+			rm.put("msg", "삭제 성공!!");
+		}
+		return gs.toJson(rm);
+	}
+
+	@Override
+	public String updateUser(HttpServletRequest req) {
+		String param = req.getParameter("param");
+		UserClass uc = gs.fromJson(param, UserClass.class);
+		int result = ud.updateUser(uc);		
+		HashMap<String,String> rm = new HashMap<String, String>();
+		rm.put("result", "no");
+		rm.put("msg", "수정이 실패하였습니다.");
+		if(result==1) {
+			rm.put("result", "ok");
+			rm.put("msg", "수정 성공!!");
+		}
+		return gs.toJson(rm);
+	}
+	
 	
 }
