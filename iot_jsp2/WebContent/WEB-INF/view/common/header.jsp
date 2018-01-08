@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 String loginMenu = "Login";
-String loginUrl = rootPath + "/view/user/login";
+String loginUrl = rootPath + "/view/user/login2";
 if(user!=null){
 	loginMenu = "Logout";
 	loginUrl = rootPath + "/user/logout";

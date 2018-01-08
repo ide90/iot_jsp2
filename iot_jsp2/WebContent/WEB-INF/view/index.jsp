@@ -11,6 +11,7 @@ if(user==null){
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IOT_TEST</title>
 </head>
+<link rel="stylesheet" href="<%=rootPath%>/ui/css/index.css" />
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jsp" flush="false" />
     <div class="container">
