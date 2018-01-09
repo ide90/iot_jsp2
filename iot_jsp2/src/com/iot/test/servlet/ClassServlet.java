@@ -47,6 +47,10 @@ public class ClassServlet extends HttpServlet {
 		if(cmd.equals("list")) {
 		 List<ClassInfo> classList = cs.getClassList();
 			out.println(gs.toJson(classList));
+		}else if(cmd.equals("update")) {
+			out.println(cs.updateClass(req));
+		}else if(cmd.equals("delete")) {
+			out.println(cs.deleteClass(req));
 		
 		}
 	}

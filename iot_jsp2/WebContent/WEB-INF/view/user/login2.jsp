@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/login.css" />
 <body>
-<jsp:include page="/WEB-INF/view/common/header.jsp" flush="false" />
+<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
 <div id="login">
   <form>
     <h1>Sign In</h1>
