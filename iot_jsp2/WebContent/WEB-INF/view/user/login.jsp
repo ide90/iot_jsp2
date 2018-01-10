@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,23 +12,21 @@
 	<div class="result_div"></div>
 	<div class="container">
 		<div class="starter-template">
-		
+
 			<form class="form-signin">
 				<h2 id="hText2" class="form-signin-heading">로그인</h2>
-				
-				<label for="userId" class="sr-only">ID</label> 
-				<input type="text" id="userId" name="userId" class="form-control"
-					placeholder="ID" autofocus>
-					
-				<label for="userPwd" class="sr-only">Password</label> 
-				<input type="password" id="userPwd" name="userPwd" class="form-control"
-					placeholder="Password">
-					
-				<input class="btn btn-lg btn-primary btn-block" type="button"
-					id="loginBtn" value="Login" onclick="checkValue()">
-					
-				<a href="/view/user/signin">회원가입</a>
-			</form>
+
+				<label for="userId" class="sr-only">ID</label> <input type="text"
+					id="userId" name="userId" class="form-control" placeholder="ID"
+					autofocus> <label for="userPwd" class="sr-only">Password</label>
+				<input type="password" id="userPwd" name="userPwd"
+					class="form-control" placeholder="Password"> 
+					<input	type="checkbox" id="saveId">아이디 저장
+					 <input
+					class="btn btn-lg btn-primary btn-block" type="button"
+					id="loginBtn" value="Login" onclick="checkValue()"> <a
+					href="/view/user/signin">회원가입</a>
+			</form> 
 		</div>
 	</div>
 </body>
@@ -38,6 +36,7 @@ function checkValue(){
 	var objs = $(".container");
 	var userId = $("#userId").val().trim();
 	var userPwd = $("#userPwd").val().trim();
+	var saveId = $("saveId").prop("checked");
 	if(userId.length<3){
 		alert("유저아이디 확인해!!");
 		$("#userId").focus();
@@ -48,7 +47,7 @@ function checkValue(){
 		$("#userPwd").focus();
 		return;
 	}
-	var param = {uiId:userId, uiPwd:userPwd};
+	var param = {uiId:userId, uiPwd:userPwd, saveId:saveId};
 	
 	param = "param=" + encodeURIComponent(JSON.stringify(param));
 	$.ajax({
@@ -60,9 +59,33 @@ function checkValue(){
 			alert(obj.msg);
 			if(obj.login=="ok"){
 				location.href="<%=rootPath%>/";
+				}
+			}
+		})
+	}
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
 			}
 		}
-	})
-}
+		return "";
+	}
+
+	$(document).ready(function() {
+		var userId = getCookie("userId");
+		var saveId = getCookie("saveId");
+		if (userId) {
+			$("#userId").val(userId);
+			$("#saveId").prop("checked", true);
+		}
+	});
 </script>
 </html>

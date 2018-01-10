@@ -14,7 +14,8 @@
     <h1>Sign In</h1>
     <input type="text" placeholder="Username"  id="userId" name="userId" autofocus >
     <input type="password" id="userPwd" name="userPwd" placeholder="Password">
-    <button id="loginBtn" value="Login" onclick="checkValue()">Sign in</button>
+					<input	type="checkbox" id="saveId">아이디 저장
+    <button id="loginBtn" type="button" value="Login" onclick="checkValue()">Sign in</button>
     <a href="/view/user/signin">회원가입</a>
     
   </form>
@@ -22,10 +23,35 @@
 </body>
 <script>
 
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
+$(document).ready(function() {
+	var userId = getCookie("userId");
+	var saveId = getCookie("saveId");
+	if (userId) {
+		$("#userId").val(userId);
+		$("#saveId").prop("checked", true);
+	}
+});
 function checkValue(){
 	var objs = $(".container");
 	var userId = $("#userId").val().trim();
 	var userPwd = $("#userPwd").val().trim();
+	var saveId = $("#saveId").prop("checked");
 	if(userId.length<3){
 		alert("유저아이디 확인해!!");
 		$("#userId").focus();
@@ -36,7 +62,7 @@ function checkValue(){
 		$("#userPwd").focus();
 		return;
 	}
-	var param = {uiId:userId, uiPwd:userPwd};
+	var param = {uiId:userId, uiPwd:userPwd,saveId:saveId};
 	
 	param = "param=" + encodeURIComponent(JSON.stringify(param));
 	$.ajax({
@@ -49,6 +75,9 @@ function checkValue(){
 			if(obj.login=="ok"){
 				location.href="<%=rootPath%>/";
 			}
+		},
+		error:function(xhr){
+			alert(xhr.responseText);
 		}
 	})
 }

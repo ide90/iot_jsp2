@@ -42,16 +42,16 @@ public class UserServlet extends HttpServlet {
 	
 	public void doProcess(HttpServletRequest req,HttpServletResponse res)throws
 	IOException, ServletException{
-		System.out.println("encode : " + req.getCharacterEncoding());
+		//System.out.println("encode : " + req.getCharacterEncoding());
 		PrintWriter out =res.getWriter();
 		String uri = req.getRequestURI();
 		String cmd = getCommand(uri);
 		if(cmd.equals("login")) {
-			HashMap<String,Object> hm = us.login(req);
+			HashMap<String,Object> hm = us.login(req,res);
 			out.println(gs.toJson(hm));
 		}else if(cmd.equals("logout")) {
 			us.logout(req);
-			RequestDispatcher rd = req.getRequestDispatcher("/view/user/login");
+			RequestDispatcher rd = req.getRequestDispatcher("/view/user/login2");
 			rd.forward(req, res);
 		}else if(cmd.equals("signin")){
 			us.signin(req);
