@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="<%=rootPath%>/ui/css/list.css" />
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
 
@@ -36,7 +37,7 @@
 									<th class="text-center" data-field="ciNo,ro">번호</th>
 									<th class="text-center" data-field="ciName,txt">클래스이름</th>
 									<th class="text-center" data-field="ciDesc,txt">클래스설명</th>
-									<th class="text-center" data-field="BTN"></th>
+									<th class="text-center" data-field="BTN">*</th>
 									<em class="glyphicon glyphicon-asterisk"></em>
 									</th>
 								</tr>
