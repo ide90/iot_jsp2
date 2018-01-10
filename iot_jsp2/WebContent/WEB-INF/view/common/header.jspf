@@ -5,7 +5,7 @@
 	String rootPath = request.getContextPath();
 	UserClass user = (UserClass) session.getAttribute("user");
 	String loginMenu = "Login";
-	String loginUrl = rootPath + "/view/user/login2";
+	String loginUrl = rootPath + "/view/user/login";
 	if (user != null) {
 		loginMenu = "Logout";
 		loginUrl = rootPath + "/user/logout";

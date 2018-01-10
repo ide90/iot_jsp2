@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
-<link rel="stylesheet" href="<%=rootPath%>/ui/css/sign.css" />
+<link rel="stylesheet" href="<%=rootPath%>/ui/css/loginm.css" />
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
 	<div class="result_div"></div>
@@ -14,18 +14,18 @@
 		<div class="starter-template">
 
 			<form class="form-signin">
-				<h2 id="hText2" class="form-signin-heading">로그인</h2>
+				<h2 id="hText2" class="form-signin-heading">Please Sign in</h2>
 
 				<label for="userId" class="sr-only">ID</label> <input type="text"
 					id="userId" name="userId" class="form-control" placeholder="ID"
 					autofocus> <label for="userPwd" class="sr-only">Password</label>
 				<input type="password" id="userPwd" name="userPwd"
 					class="form-control" placeholder="Password"> 
-					<input	type="checkbox" id="saveId">아이디 저장
+					<input	type="checkbox" id="saveId">Save id
 					 <input
 					class="btn btn-lg btn-primary btn-block" type="button"
 					id="loginBtn" value="Login" onclick="checkValue()"> <a
-					href="/view/user/signin">회원가입</a>
+					href="/view/user/signin">Sign up</a>
 			</form> 
 		</div>
 	</div>

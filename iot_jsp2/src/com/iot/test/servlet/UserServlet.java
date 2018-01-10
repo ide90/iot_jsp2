@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
 			out.println(gs.toJson(hm));
 		}else if(cmd.equals("logout")) {
 			us.logout(req);
-			RequestDispatcher rd = req.getRequestDispatcher("/view/user/login2");
+			RequestDispatcher rd = req.getRequestDispatcher("/view/user/login");
 			rd.forward(req, res);
 		}else if(cmd.equals("signin")){
 			us.signin(req);
