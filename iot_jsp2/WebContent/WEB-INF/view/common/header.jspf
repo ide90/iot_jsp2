@@ -44,6 +44,8 @@ $(document).ready(function(){
 				<li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
 				<li><a href="<%=rootPath%>/view/user/list">User List</a></li>
 				<li><a href="<%=rootPath%>/view/user/classlist">Class List</a></li>
+				<li><a href="<%=rootPath%>/view/user/openclass">Open Class</a></li>
+			
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

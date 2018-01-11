@@ -11,5 +11,6 @@ public interface ClassService {
 	List<ClassInfo> getClassList();
 	public String deleteClass(HttpServletRequest req);
 	public String updateClass(HttpServletRequest req);
+	public String insertClass(HttpServletRequest req);
 
 }

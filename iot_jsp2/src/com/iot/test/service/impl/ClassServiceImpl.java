@@ -56,4 +56,20 @@ public class ClassServiceImpl implements ClassService{
 		return gs.toJson(rm);
 	}
 
+
+	@Override
+	public String insertClass(HttpServletRequest req) {
+		String param = req.getParameter("param");
+		ClassInfo cu = gs.fromJson(param, ClassInfo.class);
+		int result = cdao.insertClass(cu);		
+		HashMap<String,String> rm = new HashMap<String, String>();
+		rm.put("result", "no");
+		rm.put("msg", "삽입이 실패하였습니다.");
+		if(result==1) {
+			rm.put("result", "ok");
+			rm.put("msg", "삽입 성공!!");
+		}
+		return gs.toJson(rm);
+	}
+
 }

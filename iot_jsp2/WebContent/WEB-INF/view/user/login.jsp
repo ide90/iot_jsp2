@@ -38,12 +38,12 @@ function checkValue(){
 	var userPwd = $("#userPwd").val().trim();
 	var saveId = $("saveId").prop("checked");
 	if(userId.length<3){
-		alert("유저아이디 확인해!!");
+		alert("아이디를 확인해주세요");
 		$("#userId").focus();
 		return;
 	}
 	if(userPwd.length<3){
-		alert("비밀번호 확인해!!");
+		alert("비밀번호를 확인해주세요");
 		$("#userPwd").focus();
 		return;
 	}

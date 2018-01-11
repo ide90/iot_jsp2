@@ -39,7 +39,7 @@
 									<th class="text-center" data-field="ciDesc,txt">클래스설명</th>
 									<th class="text-center" data-field="BTN">*</th>
 									<em class="glyphicon glyphicon-asterisk"></em>
-									</th>
+									
 								</tr>
 							</thead>
 							<tbody id="result_tb">
@@ -53,7 +53,7 @@
 </body>
 <script>
 function deleteClass(ciNo){
-	var isDelete = confirm("진짜 지우게?");
+	var isDelete = confirm("삭제하시겠습니까?");
 	var param = "ciNo=" + ciNo;
 	
 	if(isDelete){
@@ -94,6 +94,7 @@ function deleteClass(ciNo){
 			}
 		})
 	}
+		
 var colsInfo = []; 
 $(document).ready(function(){
 	var colList = $("#grid1 th[data-field]");

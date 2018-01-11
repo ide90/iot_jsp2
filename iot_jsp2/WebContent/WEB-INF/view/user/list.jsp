@@ -54,7 +54,7 @@
 </body>
 <script>
 function deleteUser(uiNo){
-	var isDelete = confirm("진짜 지우게?");
+	var isDelete = confirm("삭제하시겠습니까?");
 	var param = "uiNo=" + uiNo;
 	
 	if(isDelete){

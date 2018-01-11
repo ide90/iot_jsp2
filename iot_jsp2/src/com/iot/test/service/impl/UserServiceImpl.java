@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 		
 		UserClass uc = gs.fromJson(req.getParameter("param"), UserClass.class);
 		HashMap<String,Object> hm = new HashMap<String,Object>();
-		hm.put("msg", "오 로그인 성공하셨네요 ~");
+		hm.put("msg", "로그인성공");
 		hm.put("login", "ok");
 		
 		UserClass checkUc=ud.selectUser(uc.getUiId());
@@ -67,10 +67,10 @@ public class UserServiceImpl implements UserService{
 		int result = ud.insertUser(uc);
 		HashMap<String,String> rm = new HashMap<String, String>();
 		rm.put("result", "no");
-		rm.put("msg", "실패했어 이유는 모르겠다");
+		rm.put("msg", "실패!");
 		if(result==1) {
 			rm.put("result","ok");
-			rm.put("msg", "성공했어, 잘했다~~");
+			rm.put("msg", "성공!");
 		}
 		req.setAttribute("resStr",gs.toJson(rm));
 		

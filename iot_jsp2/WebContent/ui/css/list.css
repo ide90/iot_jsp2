@@ -17,7 +17,9 @@ body {
     text-align:center;
     width: 100px;
 }
-
+.insertBtn{
+	
+}
 .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
 .panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
   border-right: 0px;
