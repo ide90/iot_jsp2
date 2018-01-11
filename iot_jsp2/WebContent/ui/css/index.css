@@ -3,6 +3,7 @@
 body {
     background: #f9f9f9;
 
+	-webkit-background-clip: padding-box;
 };
 body:before {
   content: " ";
