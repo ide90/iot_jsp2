@@ -50,7 +50,7 @@ public class ClassServlet extends HttpServlet {
 			out.println(cs.updateClass(req));
 		} else if (cmd.equals("delete")) {
 			out.println(cs.deleteClass(req));
-		} else if (cmd.equals("insert")) {
+		} else if (cmd.equals("openclass")) {
 			out.println(cs.insertClass(req));
 		}
 	}

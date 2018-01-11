@@ -60,7 +60,9 @@ public class ClassServiceImpl implements ClassService{
 	@Override
 	public String insertClass(HttpServletRequest req) {
 		String param = req.getParameter("param");
+		System.out.println(param);
 		ClassInfo cu = gs.fromJson(param, ClassInfo.class);
+		
 		int result = cdao.insertClass(cu);		
 		HashMap<String,String> rm = new HashMap<String, String>();
 		rm.put("result", "no");
